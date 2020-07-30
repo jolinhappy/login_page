@@ -30,7 +30,7 @@ function userCheck(userData) {
   const checkeduser = users.find(user => user.email === userData.email && user.password === userData.password)
   if (checkeduser) {
     return `${checkeduser.firstName}`
-  } return 'false'
+  } return false
 }
 
 module.exports = userCheck

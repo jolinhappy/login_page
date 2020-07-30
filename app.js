@@ -18,9 +18,9 @@ app.post('/', (req, res) => {
   if (checkedName) {
     res.render('welcome', { checkedName })
   } else {
-    res.render('index',)
+    const error = 'your email or password is wrong!'
+    res.render('index', { error })
   }
-
 })
 
 app.listen(port, () => {
