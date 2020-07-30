@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const userCheck = require('./user_check')
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -13,8 +14,13 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  console.log(req.body)
-  res.render('index')
+  const checkedName = userCheck(req.body)
+  if (checkedName) {
+    res.render('welcome', { checkedName })
+  } else {
+    res.render('index',)
+  }
+
 })
 
 app.listen(port, () => {
